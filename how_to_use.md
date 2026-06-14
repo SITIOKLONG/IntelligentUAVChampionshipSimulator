@@ -50,11 +50,19 @@ exec /usr/local/Build/LinuxNoEditor/RMUA/Binaries/Linux/RMUA-Linux-Shipping \
 
 Check if it is running:
 
+
 ```bash
 docker ps | grep sim01
 ```
 
 If it shows `sim01` and `Up`, the simulator is running.
+
+## change docker tag name
+
+```bash
+docker tag simulator01_fixed simulator01
+```
+
 
 ## 2. Check simulator logs
 
