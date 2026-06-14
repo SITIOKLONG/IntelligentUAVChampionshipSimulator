@@ -1,0 +1,8 @@
+FROM simulator01
+
+USER root
+COPY start.bash /usr/local/start.bash
+RUN chmod 755 /usr/local/start.bash
+
+USER ue4
+ENTRYPOINT ["/bin/bash", "/usr/local/start.bash"]
