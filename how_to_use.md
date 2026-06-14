@@ -23,6 +23,31 @@ docker run -d \
   simulator01_fixed
 ```
 
+or start with ue4 gui:
+
+```bash
+docker rm -f sim01
+
+xhost +local:docker
+
+docker run -it --rm \
+  --net host \
+  --gpus '"device=1"' \
+  -e Seed=123 \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --name sim_gui \
+  --entrypoint /bin/bash \
+  simulator01_fixed -lc '
+source /opt/ros/noetic/setup.bash
+roscore &
+sleep 5
+exec /usr/local/Build/LinuxNoEditor/RMUA/Binaries/Linux/RMUA-Linux-Shipping \
+  -seed 123 \
+  -windowed
+'
+```
+
 Check if it is running:
 
 ```bash
